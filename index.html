@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sudo Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Party Challenge</p>
+          <h1>Sudo Game</h1>
+        </div>
+        <button id="resetBtn" class="secondary-btn" type="button">Reset Scores</button>
+      </header>
+
+      <div id="shareBar" class="share-bar hidden">
+        <button id="inviteBtn" class="secondary-btn" type="button">Invite to chat</button>
+        <button id="shareScoresBtn" class="secondary-btn" type="button">Share scores</button>
+        <span id="shareNote" class="share-note" role="status"></span>
+      </div>
+
+      <section id="setupPanel" class="panel setup-panel">
+        <div class="panel-header">
+          <h2>Players</h2>
+          <p>Set the names of your four friends and start the match.</p>
+        </div>
+
+        <div class="player-grid">
+          <label>
+            <span>Player 1</span>
+            <input type="text" id="player1" maxlength="18" value="Player 1" />
+          </label>
+          <label>
+            <span>Player 2</span>
+            <input type="text" id="player2" maxlength="18" value="Player 2" />
+          </label>
+          <label>
+            <span>Player 3</span>
+            <input type="text" id="player3" maxlength="18" value="Player 3" />
+          </label>
+          <label>
+            <span>Player 4</span>
+            <input type="text" id="player4" maxlength="18" value="Player 4" />
+          </label>
+        </div>
+
+        <div class="game-settings">
+          <label class="setting-field">
+            <span>End Rule</span>
+            <select id="endRuleSelect">
+              <option value="score">First to 100 points</option>
+              <option value="rounds">Play a fixed number of rounds</option>
+              <option value="infinite">No end limit</option>
+            </select>
+          </label>
+
+          <label class="setting-field hidden" id="roundLimitField">
+            <span>Round limit</span>
+            <input id="roundLimitInput" type="number" min="3" max="50" value="10" />
+          </label>
+        </div>
+
+        <div class="setup-actions">
+          <button id="startBtn" class="primary-btn" type="button">Start Game</button>
+        </div>
+      </section>
+
+      <main id="gamePanel" class="panel game-panel hidden">
+        <div class="scoreboard" id="scoreboard"></div>
+
+        <div class="challenge-card">
+          <div class="challenge-topline">
+            <span class="badge">Round <strong id="roundDisplay">1</strong></span>
+            <span class="badge timer" id="timerDisplay">15s</span>
+          </div>
+
+          <div class="active-player">
+            <p>Current player</p>
+            <h3 id="activePlayerLabel">Player 1</h3>
+          </div>
+
+          <div class="question-box">
+            <p class="question-label">Solve this</p>
+            <h2 id="questionText">8 + 7</h2>
+          </div>
+
+          <form id="answerForm" class="answer-form">
+            <label for="answerInput" class="sr-only">Your answer</label>
+            <input id="answerInput" type="number" inputmode="numeric" placeholder="Type your answer" autocomplete="off" />
+            <div class="action-row">
+              <button class="primary-btn" type="submit">Submit</button>
+              <button id="skipBtn" class="secondary-btn" type="button">Skip</button>
+            </div>
+          </form>
+
+          <p id="statusMessage" class="status-message">Game is live.</p>
+        </div>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
